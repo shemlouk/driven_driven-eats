@@ -87,11 +87,15 @@ body {
 
 /* || CONTEUDO || */
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .conteudo {
-    height: calc(100vh - 231px);
+    height: calc(100vh - 184px);
     width: 100vw;
-    margin-top: 123px;
-    margin-bottom: 108px;
+    margin: 92px 0;
+    overflow-y: scroll;
 }
 
 .conteudo section {
@@ -101,7 +105,11 @@ body {
 }
 
 .conteudo section:first-child {
-    margin-top: 0px;
+    margin-top: 31px;
+}
+
+.conteudo section:last-child {
+    margin-bottom: 16px;
 }
 
 .conteudo h2 {
