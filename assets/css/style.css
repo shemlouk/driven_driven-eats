@@ -156,10 +156,9 @@ body {
     height: 39px;
     font-size: 15px;
     color: var(--cor-fonte-3);
-    overflow-wrap: break-word;
-    line-height: 18px;
     margin: 5px 0px;
     font-weight: 300;
+    line-height: 18px;
 }
 
 .card__price {
@@ -173,4 +172,38 @@ body {
     position: absolute;
     bottom: 16px;
     right: 13px;
+}
+
+/* || Adicao das imagens nos cards || */
+
+.card__image--prato1 {
+    background: url(../images/burger.jpg) center/cover no-repeat;
+}
+.card__image--prato2 {
+    background: url(../images/pizza.jpg) center/cover no-repeat;
+}
+.card__image--prato3 {
+    background: url(../images/fried-chicken.jpg) center/cover no-repeat;
+}
+
+
+.card__image--bebida1 {
+    background: url(../images/fanta.jpg) center/cover no-repeat;
+}
+.card__image--bebida2 {
+    background: url(../images/coca-cola.jpg) center/cover no-repeat;
+}
+.card__image--bebida3 {
+    background: url(../images/bud-light.jpg) center/cover no-repeat;
+}
+
+
+.card__image--sobremesa1 {
+    background: url(../images/oreo-ice-cream.jpg) center/cover no-repeat;
+}
+.card__image--sobremesa2 {
+    background: url(../images/churros.jpg) center/cover no-repeat;
+}
+.card__image--sobremesa3 {
+    background: url(../images/cookies.jpg) center/cover no-repeat;
 }
