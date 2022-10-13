@@ -207,3 +207,14 @@ body {
 .card__image--sobremesa3 {
     background: url(../images/cookies.jpg) center/cover no-repeat;
 }
+
+/* || SELECTED e UNLOCKED || */
+
+.selected {
+    border: 5px solid var(--cor-tema-2);
+    padding: 13px 10px;
+}
+
+.unlocked {
+    background-color: var(--cor-tema-2);
+}
