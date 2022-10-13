@@ -25,3 +25,33 @@ html {
 body {
     background-color: var(--cor-background-1);
 }
+
+/* || CABECALHO || */
+
+.cabecalho {
+    width: 100vw;
+    height: 92px;
+    background-color: var(--cor-tema-1);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+}
+
+.cabecalho * {
+    color: white;
+}
+
+.cabecalho a {
+    padding-left: 21px;
+}
+
+.cabecalho h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 44px;
+    margin-bottom: 5px;
+}
+
+.cabecalho p {
+    font-size: 18px;
+}
