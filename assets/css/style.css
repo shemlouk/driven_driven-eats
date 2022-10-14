@@ -168,7 +168,6 @@ body {
 }
 
 .card img {
-    display: none;
     position: absolute;
     bottom: 16px;
     right: 13px;
@@ -208,13 +207,17 @@ body {
     background: url(../images/cookies.jpg) center/cover no-repeat;
 }
 
-/* || SELECTED e UNLOCKED || */
+/* || DYNAMICS || */
 
 .selected {
     border: 5px solid var(--cor-tema-2);
     padding: 13px 10px;
 }
 
-.unlocked {
+.hided {
+    display: none;
+}
+
+.enabled {
     background-color: var(--cor-tema-2);
 }

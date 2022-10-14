@@ -1,59 +1,72 @@
 const produtos = document.querySelectorAll("[data-section]");
+const botaoFecharPedido = document.querySelector(
+  '[data-button="fechar-pedido"]'
+);
 
 let produtosSelecionados = [];
 
-produtos.forEach((elemento) => {
-  elemento.addEventListener("click", (e) => {
-    const produto = e.currentTarget;
-    atualizaProdutosSelecionados(produto);
-    //atualiza o css
-    //verifica o botao se ja pode > 3
+botaoFecharPedido.addEventListener("click", (e) => {
+  alert();
+});
+
+produtos.forEach((produto) => {
+  produto.addEventListener("click", (e) => {
+    const produtoSelecionado = e.currentTarget;
+
+    // something something
+
+    atualizarProdutosSelecionados(produtoSelecionado);
+    atualizarBotao();
   });
 });
 
-//conferir se ele ja existe na lista
-//SE ja existir, substituir
-//Se nao, adicionar
+// ========================================================
 
-const atualizaProdutosSelecionados = (produto) => {
-  const attProduto = produto.getAttribute("data-section");
-
-  let toogle = true;
-
-  //Se a lista estiver vazia, adicona o primeiro item selecionado direto
-  if (produtosSelecionados.length === 0) {
-    produtosSelecionados.push(produto);
-    adicionaStyle(produto);
-    return;
+const atualizarBotao = () => {
+  if (produtosSelecionados.length === 3) {
+    botaoFecharPedido.disabled = false;
+    botaoFecharPedido.classList.add("enabled");
+    botaoFecharPedido.innerHTML = "Fechar pedido";
+  } else {
+    botaoFecharPedido.disabled = true;
+    botaoFecharPedido.classList.remove("enabled");
+    botaoFecharPedido.innerHTML = "Selecione os 3 itens para fechar o pedido";
   }
+};
 
-  //Se não estiver vazia, verifica se já existe algum elemento nela com o mesmo atributo do item selecionado
-  //Se VERDADEIRO, substitui o que já estava na lista pelo novo
-  produtosSelecionados.forEach((elemento) => {
-    const attElemento = elemento.getAttribute("data-section");
-    if (attElemento === attProduto) {
-      const index = produtosSelecionados.indexOf(elemento);
-      removeStyle(elemento);
-      produtosSelecionados.splice(index, 1);
-      produtosSelecionados.push(produto);
-      adicionaStyle(produto);
-      toogle = false;
-    }
+// ========================================================
+
+const atualizarProdutosSelecionados = (selecao) => {
+  const atributoSelecao = selecao.getAttribute("data-section");
+
+  const match = produtosSelecionados.find((produto) => {
+    return produto.getAttribute("data-section") === atributoSelecao;
   });
 
-  //Se o toogle for VERDADEIRO, adiciona o produto na lista
-  if (toogle) {
-    produtosSelecionados.push(produto);
-    adicionaStyle(produto);
+  if (match === undefined) {
+    adicionarProduto(selecao);
+  } else if (match === selecao) {
+    removerProduto(match);
+  } else {
+    removerProduto(match);
+    adicionarProduto(selecao);
   }
 };
 
-const adicionaStyle = (produto) => {
-  produto.querySelector("img").style.display = "block";
-  produto.classList.add("selected");
+// ========================================================
+
+const adicionarProduto = (item) => {
+  produtosSelecionados.push(item);
+  mudarEstilizacao(item);
 };
 
-const removeStyle = (produto) => {
-  produto.querySelector("img").style.display = "none";
-  produto.classList.remove("selected");
+const removerProduto = (item) => {
+  const index = produtosSelecionados.indexOf(item);
+  produtosSelecionados.splice(index, 1);
+  mudarEstilizacao(item);
+};
+
+const mudarEstilizacao = (item) => {
+  item.querySelector("img").classList.toggle("hided");
+  item.classList.toggle("selected");
 };
