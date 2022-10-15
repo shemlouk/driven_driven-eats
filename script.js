@@ -6,23 +6,21 @@ const botaoFecharPedido = document.querySelector(
 let produtosSelecionados = [];
 
 botaoFecharPedido.addEventListener("click", (e) => {
-  alert();
+  // something something
 });
 
 produtos.forEach((produto) => {
   produto.addEventListener("click", (e) => {
     const produtoSelecionado = e.currentTarget;
 
-    // something something
-
     atualizarProdutosSelecionados(produtoSelecionado);
-    atualizarBotao();
+    atualizarBotaoFecharPedido();
   });
 });
 
 // ========================================================
 
-const atualizarBotao = () => {
+const atualizarBotaoFecharPedido = () => {
   if (produtosSelecionados.length === 3) {
     botaoFecharPedido.disabled = false;
     botaoFecharPedido.classList.add("enabled");

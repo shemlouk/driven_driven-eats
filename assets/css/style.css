@@ -207,7 +207,79 @@ body {
     background: url(../images/cookies.jpg) center/cover no-repeat;
 }
 
-/* || DYNAMICS || */
+/* || DIALOG || */
+
+.dialog-background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-background-2);
+    z-index: 1;
+}
+
+.dialog {
+    width: 377px;
+    height: 353px;
+    border-radius: 9px;
+    background-color: var(--cor-tema-3);
+    box-shadow: 0px 0px 10px 1px rbga(0,0,0,.25);
+    padding: 25px 25px 0px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+}
+
+.dialog p {
+    font-weight: 700;
+}
+
+.dialog table {
+    margin-top: 27px;
+    margin-bottom: 11px;
+    width: 100%;
+}
+
+.dialog tr {
+    height: 40px;
+}
+
+.dialog tr:last-child {
+    font-weight: 700;
+}
+
+.dialog td:last-child {
+    text-align: end;
+}
+
+.dialog button {
+    width: 333px;
+    height: 52px;
+    border: none;
+    font-weight: 700;
+}
+
+.dialog__botao-confirmar {
+    background-color: white;
+    color: var(--cor-tema-3);
+    border-radius: 100px;
+    font-size: 22px;
+}
+
+.dialog__botao-cancelar {
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+}
+
+
+/* || TOGGLE || */
 
 .selected {
     border: 5px solid var(--cor-tema-2);
