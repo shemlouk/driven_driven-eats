@@ -1,13 +1,10 @@
-const produtos = document.querySelectorAll("[data-section]");
-const botaoFecharPedido = document.querySelector(
-  '[data-button="fechar-pedido"]'
-);
+const produtos = [...document.querySelectorAll("[data-section]")];
+const botoes = [...document.querySelectorAll("[data-button]")];
+const entries = [...document.querySelectorAll("[data-entrySection]")];
 
 let produtosSelecionados = [];
 
-botaoFecharPedido.addEventListener("click", (e) => {
-  // something something
-});
+// ========================================================
 
 produtos.forEach((produto) => {
   produto.addEventListener("click", (e) => {
@@ -18,9 +15,34 @@ produtos.forEach((produto) => {
   });
 });
 
+botoes.forEach((botao) => {
+  botao.addEventListener("click", (e) => {
+    const atributoBotao = e.target.getAttribute("data-button");
+
+    if (atributoBotao === "fechar-pedido") {
+      toggleDialog();
+    } else if (atributoBotao === "cancelar-pedido") {
+      toggleDialog();
+    } else {
+      // DO SOMETHING
+    }
+  });
+});
+
+// ========================================================
+
+const toggleDialog = () => {
+  const dialog = document.querySelector(".dialog-background");
+  dialog.classList.toggle("hided");
+};
+
 // ========================================================
 
 const atualizarBotaoFecharPedido = () => {
+  const botaoFecharPedido = botoes.find((botao) => {
+    return botao.getAttribute("data-button") === "fechar-pedido";
+  });
+
   if (produtosSelecionados.length === 3) {
     botaoFecharPedido.disabled = false;
     botaoFecharPedido.classList.add("enabled");
