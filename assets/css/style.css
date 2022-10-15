@@ -283,7 +283,7 @@ body {
 
 .selected {
     border: 5px solid var(--cor-tema-2);
-    padding: 13px 10px;
+    padding: 13px 9px;
 }
 
 .hided {
