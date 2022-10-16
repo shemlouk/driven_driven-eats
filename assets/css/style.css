@@ -91,7 +91,7 @@ button {
 
 /* || CONTEUDO || */
 
-::-webkit-scrollbar {
+.conteudo::-webkit-scrollbar {
     display: none;
 }
 
@@ -100,6 +100,7 @@ button {
     width: 100vw;
     margin: 92px 0;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .conteudo section {
@@ -128,6 +129,7 @@ button {
 .cards {
     display: flex;
     overflow-x: scroll;
+    scrollbar-width: none;
 }
 
 .card {
@@ -317,4 +319,18 @@ button {
 
 .enabled {
     background-color: var(--cor-tema-2);
+}
+
+/* || MEDIA QUERY || */
+
+@media screen and (min-width: 1024px){
+    .cards {
+        scrollbar-width: auto;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .cards::-webkit-scrollbar {
+        display: none;
+    }
 }
