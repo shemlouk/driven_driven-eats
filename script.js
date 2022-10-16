@@ -25,7 +25,7 @@ botoes.forEach((botao) => {
     } else if (atributoBotao === "cancelar-pedido") {
       toggleDialog();
     } else {
-      // DO SOMETHING
+      // DO SOMETHING WHATSAPP
     }
   });
 });
@@ -54,10 +54,16 @@ const atualizaDialog = () => {
   });
 };
 
+// ========================================================
+
 const calculaTotal = (valores) => {
-  return valores.reduce((soma, elemento) => {
-    return elemento.numberPrice + soma;
-  }, 0);
+  return (
+    Math.round(
+      valores.reduce((soma, elemento) => {
+        return elemento.numberPrice + soma;
+      }, 0) * 100
+    ) / 100
+  );
 };
 
 const criaListaDeObjetos = () => {

@@ -254,6 +254,10 @@ body {
     font-weight: 700;
 }
 
+.dialog td {
+    resize: both;
+}
+
 .dialog td:last-child {
     text-align: end;
 }
