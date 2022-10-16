@@ -21,6 +21,7 @@ botoes.forEach((botao) => {
 
     if (atributoBotao === "fechar-pedido") {
       toggleDialog();
+      atualizaDialog();
     } else if (atributoBotao === "cancelar-pedido") {
       toggleDialog();
     } else {
@@ -28,6 +29,54 @@ botoes.forEach((botao) => {
     }
   });
 });
+
+// ========================================================
+
+const atualizaDialog = () => {
+  const valoresProdutos = criaListaDeObjetos();
+  const valorTotal = String(calculaTotal(valoresProdutos)).replace(".", ",");
+
+  entries.map((entry) => {
+    const atributoEntry = entry.getAttribute("data-entrySection");
+    const entryName = entry.querySelector("[data-entry='nome']");
+    const entryPrice = entry.querySelector("[data-entry='preco']");
+
+    valoresProdutos.forEach((valor) => {
+      if (valor.atributo === atributoEntry) {
+        entryName.innerHTML = valor.name;
+        entryPrice.innerHTML = valor.price;
+      }
+    });
+
+    if (atributoEntry === "total") {
+      entryPrice.innerHTML = `R$ ${valorTotal}`;
+    }
+  });
+};
+
+const calculaTotal = (valores) => {
+  return valores.reduce((soma, elemento) => {
+    return elemento.numberPrice + soma;
+  }, 0);
+};
+
+const criaListaDeObjetos = () => {
+  return produtosSelecionados.map((produto) => {
+    return {
+      atributo: produto.getAttribute("data-section"),
+      name: produto.querySelector("[data-test='food-title']").innerHTML,
+      price: produto
+        .querySelector("[data-test='food-price']")
+        .innerHTML.replace("R$ ", ""),
+      numberPrice: Number(
+        produto
+          .querySelector("[data-test='food-price']")
+          .innerHTML.replace("R$ ", "")
+          .replace(",", ".")
+      ),
+    };
+  });
+};
 
 // ========================================================
 
