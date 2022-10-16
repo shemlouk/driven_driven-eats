@@ -3,6 +3,7 @@ const botoes = [...document.querySelectorAll("[data-button]")];
 const entries = [...document.querySelectorAll("[data-entrySection]")];
 
 let produtosSelecionados = [];
+let mensagem;
 
 // ========================================================
 
@@ -25,23 +26,36 @@ botoes.forEach((botao) => {
     } else if (atributoBotao === "cancelar-pedido") {
       toggleDialog();
     } else {
-      // DO SOMETHING WHATSAPP
+      enviaMensagem();
     }
   });
 });
 
 // ========================================================
 
+const enviaMensagem = () => {
+  const nome = prompt("Qual o seu nome?");
+  const endereco = prompt("Qual o seu endereço?");
+
+  mensagem += `\n\nNome: ${nome}\nEndereço: ${endereco}`;
+
+  const encodedMessage = encodeURIComponent(mensagem);
+  const url = `https://wa.me/5511944685351?text=${encodedMessage}`;
+  window.open(url, "_blank");
+};
+
+// ========================================================
+
 const atualizaDialog = () => {
-  const valoresProdutos = criaListaDeObjetos();
-  const valorTotal = String(calculaTotal(valoresProdutos)).replace(".", ",");
+  const objetosProdutos = criaListaDeObjetos();
+  const valorTotal = String(calculaTotal(objetosProdutos)).replace(".", ",");
 
   entries.map((entry) => {
     const atributoEntry = entry.getAttribute("data-entrySection");
     const entryName = entry.querySelector("[data-entry='nome']");
     const entryPrice = entry.querySelector("[data-entry='preco']");
 
-    valoresProdutos.forEach((valor) => {
+    objetosProdutos.forEach((valor) => {
       if (valor.atributo === atributoEntry) {
         entryName.innerHTML = valor.name;
         entryPrice.innerHTML = valor.price;
@@ -52,6 +66,14 @@ const atualizaDialog = () => {
       entryPrice.innerHTML = `R$ ${valorTotal}`;
     }
   });
+
+  mensagem = `Olá, gostaria de fazer o pedido:
+- Prato: ${objetosProdutos.find((objeto) => objeto.atributo === "prato").name}
+- Bebida: ${objetosProdutos.find((objeto) => objeto.atributo === "bebida").name}
+- Sobremesa: ${
+    objetosProdutos.find((objeto) => objeto.atributo === "sobremesa").name
+  }
+Total: R$ ${valorTotal}`;
 };
 
 // ========================================================

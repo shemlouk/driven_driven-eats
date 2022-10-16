@@ -26,6 +26,10 @@ body {
     background-color: var(--cor-background-1);
 }
 
+button {
+    cursor: pointer;
+}
+
 /* || CABECALHO || */
 
 .cabecalho {
@@ -82,7 +86,6 @@ body {
     text-align: center;
     padding: 8px 50px;
     font-size: 20px;
-    cursor: pointer;
 }
 
 /* || CONTEUDO || */
@@ -124,6 +127,7 @@ body {
 .cards {
     display: flex;
     overflow-x: scroll;
+    scrollbar-width: none
 }
 
 .card {
